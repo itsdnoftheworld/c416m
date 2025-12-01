@@ -7,7 +7,8 @@
 }
 
 window#waybar {
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.5);
+    color: #000000;
 }
 
 #workspaces {
@@ -17,23 +18,23 @@ window#waybar {
 #workspaces button {
     padding: 0 8px;
     background-color: transparent;
-    color: #ffffff;
+    color: #000000;
 }
 
 #workspaces button.active {
-    color: #ffffff;
+    color: #000000;
     font-weight: bold;
 }
 
 #workspaces button.focused {
-    color: #ffffff;
+    color: #000000;
     font-weight: bold;
 }
 
 #clock,
 #custom-date {
     padding: 0 12px;
-    color: #ffffff;
+    color: #000000;
 }
 
 #tray,
@@ -42,7 +43,7 @@ window#waybar {
 #pulseaudio,
 #battery {
     padding: 0 8px;
-    color: #ffffff;
+    color: #000000;
 }
 
 #tray {
