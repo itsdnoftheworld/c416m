@@ -1,0 +1,67 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    
+    "modules-left": ["clock", "custom/date"],
+    "modules-center": ["niri/workspaces"],
+    "modules-right": ["tray", "bluetooth", "network", "pulseaudio", "battery"],
+    
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "●",
+            "default": "○"
+        }
+    },
+    
+    "clock": {
+        "format": "{:%I:%M %p} ♡",
+        "tooltip": false
+    },
+    
+    "custom/date": {
+        "format": "{}",
+        "exec": "date '+%a %e'",
+        "interval": 60,
+        "tooltip": false
+    },
+    
+    "tray": {
+        "spacing": 10
+    },
+    
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "",
+        "format-off": "",
+        "tooltip-format": "{status}"
+    },
+    
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "",
+        "tooltip-format": "{ifname}: {ipaddr}"
+    },
+    
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    
+    "battery": {
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", ""],
+        "format-charging": "",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        }
+    }
+}
