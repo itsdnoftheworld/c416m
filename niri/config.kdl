@@ -1,0 +1,254 @@
+// ============================================================================
+// NIRI CONFIGURATION
+// ============================================================================
+
+//Includes
+include "bindings.kdl"
+
+// Ask applications to omit client-side decorations
+prefer-no-csd
+
+// ============================================================================
+// DISPLAYS
+// ============================================================================
+
+output "PNP(AOC) Q27G3XMN 1APR3JA002539" {
+    mode "2560x1440@143.999"
+    position x=0 y=0
+    scale 1.1
+}
+
+output "Dell Inc. DELL P2317H 8R33926O00QS" {
+    mode "1920x1080@60.000"
+    position x=2332 y=265
+    scale 1.3
+    transform "90"
+}
+
+
+// ============================================================================
+// INPUT DEVICES
+// ============================================================================
+
+input {
+    keyboard {
+        xkb {
+            // Add keyboard layout options here if needed
+        }
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        scroll-method "two-finger"
+    }
+
+    mouse {
+        // Default mouse settings
+    }
+
+    trackpoint {
+        // Default trackpoint settings
+    }
+
+    // Uncomment to enable focus-follows-mouse
+    // focus-follows-mouse max-scroll-amount="0%"
+}
+// ============================================================================
+// WORKSPACES
+// ============================================================================
+
+workspace "gaming" {
+    open-on-output "HDMI-A-2"
+}
+
+// ============================================================================
+// WINDOW LAYOUT
+// ============================================================================
+
+    //Overview
+    overview {
+		backdrop-color "#d3d3d3"
+	}
+
+layout {
+    gaps 16
+    center-focused-column "never"
+
+    // Column width presets (toggled with Mod+R)
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { 
+        proportion 0.5 
+    }
+    
+    border {
+        width 2.5
+        //active-color "#b169bd"
+        //inactive-color "#f73c51"
+        active-color "black"
+        inactive-color "black"
+        //urgent-color "#9b0000"
+        // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view" in="srgb-linear"
+        // urgent-gradient from="#800" to="#a33" angle=45
+    }
+
+
+    // Focus ring styling
+    focus-ring {
+		off
+        width 4
+        active-color "#b169bd"
+        inactive-color "#505050"
+    }
+
+    // Window shadows
+    shadow {
+	    spread 2
+        offset x=0 y=5
+        color "#2074AC"
+    }
+
+    // Outer gaps
+    struts {
+        // left 64
+        // right 64
+        // top 64
+        // bottom 64
+    }
+}
+
+// ============================================================================
+// ANIMATIONS
+// ============================================================================
+
+animations {
+    // off
+
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+    
+    window-close {
+        duration-ms 150  
+        curve "ease-out-quad"
+    }
+    
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+    
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+}
+
+cursor {
+    xcursor-theme "breeze_cursors"
+    xcursor-size 24
+}
+
+// ============================================================================
+// STARTUP PROGRAMS
+// ============================================================================
+spawn-at-startup "copyq"
+//spawn-at-startup "wal" "-R"
+//spawn-at-startup "swaybg" "-i" "~/Pictures/Wallpapers/both sides now/Clouds_Desktop_Wide_2560_1440.png"
+//spawn-sh-at-startup "vicinae server"
+spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock -f -c 000000" "timeout" "600" "niri msg action power-off-monitors" "resume" "niri msg action power-on-monitors" "before-sleep" "swaylock -f -c 000000"
+
+// ============================================================================
+// SCREENSHOT SETTINGS
+// ============================================================================
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// ============================================================================
+// WINDOW RULES
+// ============================================================================
+
+
+// Apply corner radius to all windows
+window-rule {
+    geometry-corner-radius 5
+    clip-to-geometry true
+}
+
+// Zen Browser Picture-in-Picture
+window-rule {
+    match app-id=r#"zen$"# title="^Picture-in-Picture$"
+    open-floating true
+    default-column-width { fixed 480; }
+    default-window-height { fixed 270; }
+}
+
+// Mod Organizer 2 dialogs
+window-rule {
+    match app-id=r#"steam_app_489830$"# title="^Dialog$"
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"steam_app_489830$"# title="^Profiles$"
+    open-floating true
+}
+
+// Zen Browser Bitwarden extension
+window-rule {
+    match app-id=r#"zen"# title="Extension: (Bitwarden Password Manager) - Bitwarden — Zen Browser$"
+    open-floating true
+}
+
+// Various floating dialogs
+window-rule {
+    match title="^Quick Install$"
+    open-floating true
+}
+
+window-rule {
+    match title="^rofi - Bitwarden$"
+    open-floating true
+}
+
+window-rule {
+    match title="^Mod Exists$"
+    open-floating true
+}
+
+// Minecraft fullscreen
+window-rule {
+    match app-id=r#"Minecraft$"#
+    open-fullscreen true
+}
+
+window-rule {
+    match app-id="net.lutris.Lutris"
+    open-floating true
+    default-column-width { fixed 589; }
+    default-window-height { fixed 702; }
+    //open-on-workspace "gaming"
+}
+
+window-rule {
+	match app-id="pegasus-frontend"
+	open-maximized true
+	//open-on-workspace "gaming"
+}
+
+
+// ============================================================================
+// COMMENTED OUT SECTIONS
+// ============================================================================
+
+// Example: Block password managers from screen capture
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    block-out-from "screen-capture"
+}
