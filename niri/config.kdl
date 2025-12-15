@@ -162,6 +162,8 @@ spawn-at-startup "copyq"
 //spawn-at-startup "swaybg" "-i" "~/Pictures/Wallpapers/both sides now/Clouds_Desktop_Wide_2560_1440.png"
 //spawn-sh-at-startup "vicinae server"
 spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock -f -c 000000" "timeout" "600" "niri msg action power-off-monitors" "resume" "niri msg action power-on-monitors" "before-sleep" "swaylock -f -c 000000"
+spawn-at-startup "aww-daemon"
+spawn-at-startup "waybar"
 
 // ============================================================================
 // SCREENSHOT SETTINGS
@@ -176,7 +178,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // Apply corner radius to all windows
 window-rule {
-    geometry-corner-radius 5
+    geometry-corner-radius 0
     clip-to-geometry true
 }
 
