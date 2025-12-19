@@ -1,0 +1,60 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: DepartureMono Nerd Font;
+    font-size: 15px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #f7f3ee;
+    color: #f7f3ee;
+    border-bottom: 2px solid black;
+}
+
+#workspaces {
+    margin-left: 8px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    background-color: transparent;
+    color: #000000;
+}
+
+#workspaces button.active {
+    color: #000000;
+    font-weight: bold;
+}
+
+#workspaces button.focused {
+    color: #000000;
+    font-weight: bold;
+}
+
+#clock,
+#custom-date {
+    padding: 0 10px;
+    color: #556995;
+}
+
+#tray,
+#bluetooth,
+#network,
+#pulseaudio,
+#custom-updates {
+    padding: 0 10px;
+    color: #000000;
+}
+
+#tray {
+    margin-right: 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
